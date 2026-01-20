@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { useUIStore } from '@/stores'
+import { useTranslation } from '@/lib/i18n'
 import {
   FileText,
   GitCompare,
@@ -15,29 +16,30 @@ import {
 } from 'lucide-react'
 import type { ViewMode } from '@/types'
 
-const navItems: { mode: ViewMode; label: string; icon: React.ReactNode; description: string }[] = [
-  {
-    mode: 'pdf-workspace',
-    label: 'PDF Workspace',
-    icon: <FileText className="h-5 w-5" />,
-    description: 'Generate questions from PDFs',
-  },
-  {
-    mode: 'similarity',
-    label: 'Similar Questions',
-    icon: <GitCompare className="h-5 w-5" />,
-    description: 'Generate question variations',
-  },
-  {
-    mode: 'studio',
-    label: 'Interactive Studio',
-    icon: <Sparkles className="h-5 w-5" />,
-    description: 'Refine questions with AI',
-  },
-]
-
 export function Sidebar() {
   const { viewMode, setViewMode, sidebarOpen, toggleSidebar } = useUIStore()
+  const t = useTranslation()
+
+  const navItems: { mode: ViewMode; label: string; icon: React.ReactNode; description: string }[] = [
+    {
+      mode: 'pdf-workspace',
+      label: t.nav.pdfWorkspace,
+      icon: <FileText className="h-5 w-5" />,
+      description: t.nav.pdfWorkspaceDesc,
+    },
+    {
+      mode: 'similarity',
+      label: t.nav.similarQuestions,
+      icon: <GitCompare className="h-5 w-5" />,
+      description: t.nav.similarQuestionsDesc,
+    },
+    {
+      mode: 'studio',
+      label: t.nav.interactiveStudio,
+      icon: <Sparkles className="h-5 w-5" />,
+      description: t.nav.interactiveStudioDesc,
+    },
+  ]
 
   return (
     <aside
@@ -103,7 +105,7 @@ export function Sidebar() {
           <Separator />
           <div className="p-4">
             <p className="text-xs text-muted-foreground text-center">
-              Powered by AI
+              {t.common.poweredByAI}
             </p>
           </div>
         </>

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import type { Question, GenerationSession } from '@/types'
 
 interface QuestionState {
@@ -15,6 +15,9 @@ interface QuestionState {
   // Generation history
   sessions: GenerationSession[]
 
+  // Hydration state
+  _hasHydrated: boolean
+
   // Actions
   setCurrentSession: (session: GenerationSession | null) => void
   addSession: (session: GenerationSession) => void
@@ -22,15 +25,21 @@ interface QuestionState {
   updateQuestion: (id: string, updates: Partial<Question>) => void
   deleteQuestion: (id: string) => void
   clearCurrentSession: () => void
+  setHasHydrated: (state: boolean) => void
 }
 
 export const useQuestionStore = create<QuestionState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       currentSession: null,
       questions: [],
       selectedQuestion: null,
       sessions: [],
+      _hasHydrated: false,
+
+      setHasHydrated: (state) => {
+        set({ _hasHydrated: state })
+      },
 
       setCurrentSession: (session) => {
         set({
@@ -96,9 +105,13 @@ export const useQuestionStore = create<QuestionState>()(
     }),
     {
       name: 'socratic-questions',
+      storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         sessions: state.sessions,
       }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      },
     }
   )
 )

@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { Card } from '@/components/ui/card'
 import { Upload, FileText, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useTranslation } from '@/lib/i18n'
 
 interface PDFDropzoneProps {
   onFileSelect: (file: File) => void
@@ -20,6 +21,8 @@ export function PDFDropzone({
   onClear,
   isUploading = false,
 }: PDFDropzoneProps) {
+  const t = useTranslation()
+
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       if (acceptedFiles.length > 0) {
@@ -83,14 +86,11 @@ export function PDFDropzone({
         </div>
         <div>
           <p className="font-medium">
-            {isDragActive ? 'Drop the PDF here' : 'Drag & drop a PDF file'}
-          </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            or click to browse
+            {t.pdfWorkspace.dropPdfHere}
           </p>
         </div>
         <p className="text-xs text-muted-foreground">
-          Supported format: PDF (max 10MB)
+          {t.pdfWorkspace.supportedFormats}
         </p>
       </div>
     </div>

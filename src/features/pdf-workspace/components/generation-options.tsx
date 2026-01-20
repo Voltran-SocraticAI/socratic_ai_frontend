@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
+import { useTranslation } from '@/lib/i18n'
 import type { QuestionType, Difficulty } from '@/types'
 
 interface GenerationOptionsProps {
@@ -35,6 +36,8 @@ export function GenerationOptions({
   topicFocus,
   setTopicFocus,
 }: GenerationOptionsProps) {
+  const t = useTranslation()
+
   const toggleQuestionType = (type: QuestionType) => {
     if (questionTypes.includes(type)) {
       if (questionTypes.length > 1) {
@@ -48,12 +51,12 @@ export function GenerationOptions({
   return (
     <Card>
       <CardHeader className="pb-3">
-        <CardTitle className="text-base">Generation Options</CardTitle>
+        <CardTitle className="text-base">{t.generation.options}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Number of Questions */}
         <div className="space-y-2">
-          <Label htmlFor="num-questions">Number of Questions</Label>
+          <Label htmlFor="num-questions">{t.generation.count}</Label>
           <Input
             id="num-questions"
             type="number"
@@ -66,7 +69,7 @@ export function GenerationOptions({
 
         {/* Question Types */}
         <div className="space-y-2">
-          <Label>Question Types</Label>
+          <Label>{t.generation.questionType}</Label>
           <div className="flex gap-2">
             <Badge
               variant={questionTypes.includes('mcq') ? 'default' : 'outline'}
@@ -76,7 +79,7 @@ export function GenerationOptions({
               )}
               onClick={() => toggleQuestionType('mcq')}
             >
-              Multiple Choice
+              {t.generation.mcq}
             </Badge>
             <Badge
               variant={questionTypes.includes('open_ended') ? 'default' : 'outline'}
@@ -86,33 +89,33 @@ export function GenerationOptions({
               )}
               onClick={() => toggleQuestionType('open_ended')}
             >
-              Open Ended
+              {t.generation.openEnded}
             </Badge>
           </div>
         </div>
 
         {/* Difficulty */}
         <div className="space-y-2">
-          <Label htmlFor="difficulty">Difficulty</Label>
+          <Label htmlFor="difficulty">{t.generation.difficulty}</Label>
           <Select value={difficulty} onValueChange={(v) => setDifficulty(v as Difficulty)}>
             <SelectTrigger id="difficulty">
-              <SelectValue placeholder="Select difficulty" />
+              <SelectValue placeholder={t.generation.difficulty} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="easy">Easy</SelectItem>
-              <SelectItem value="medium">Medium</SelectItem>
-              <SelectItem value="hard">Hard</SelectItem>
-              <SelectItem value="mixed">Mixed</SelectItem>
+              <SelectItem value="easy">{t.generation.easy}</SelectItem>
+              <SelectItem value="medium">{t.generation.medium}</SelectItem>
+              <SelectItem value="hard">{t.generation.hard}</SelectItem>
+              <SelectItem value="mixed">{t.generation.mixed}</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         {/* Topic Focus */}
         <div className="space-y-2">
-          <Label htmlFor="topic-focus">Topic Focus (Optional)</Label>
+          <Label htmlFor="topic-focus">{t.generation.topic}</Label>
           <Input
             id="topic-focus"
-            placeholder="e.g., Photosynthesis, World War II"
+            placeholder={t.generation.topicPlaceholder}
             value={topicFocus}
             onChange={(e) => setTopicFocus(e.target.value)}
           />

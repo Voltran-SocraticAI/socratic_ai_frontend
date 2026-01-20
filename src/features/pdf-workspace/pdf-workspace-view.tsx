@@ -7,6 +7,7 @@ import { Progress } from '@/components/ui/progress'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { useQuestionStore, useUIStore } from '@/stores'
+import { useTranslation } from '@/lib/i18n'
 import {
   PDFDropzone,
   GenerationOptions,
@@ -20,6 +21,7 @@ import type { QuestionType, Difficulty, Question } from '@/types'
 export function PDFWorkspaceView() {
   const { questions, selectedQuestion, selectQuestion, deleteQuestion } = useQuestionStore()
   const { setViewMode } = useUIStore()
+  const t = useTranslation()
 
   // File upload state
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -78,11 +80,11 @@ export function PDFWorkspaceView() {
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="pdf" className="gap-2">
                   <FileText className="h-4 w-4" />
-                  PDF Upload
+                  {t.pdfWorkspace.uploadPdf}
                 </TabsTrigger>
                 <TabsTrigger value="text" className="gap-2">
                   <Type className="h-4 w-4" />
-                  Text Input
+                  {t.pdfWorkspace.orEnterText}
                 </TabsTrigger>
               </TabsList>
 
@@ -128,7 +130,7 @@ export function PDFWorkspaceView() {
             onClick={handleGenerate}
           >
             <Sparkles className="h-5 w-5" />
-            {isLoading ? 'Generating...' : 'Generate Questions'}
+            {isLoading ? t.pdfWorkspace.generating : t.pdfWorkspace.generateQuestions}
           </Button>
         </div>
       </div>
@@ -136,9 +138,9 @@ export function PDFWorkspaceView() {
       {/* Right Panel - Generated Questions */}
       <div className="flex-1 flex flex-col">
         <div className="p-4 border-b">
-          <h2 className="font-semibold">Generated Questions</h2>
+          <h2 className="font-semibold">{t.pdfWorkspace.title}</h2>
           <p className="text-sm text-muted-foreground">
-            {questions.length} questions generated
+            {questions.length} {t.pdfWorkspace.questionsGenerated}
           </p>
         </div>
         <QuestionsList

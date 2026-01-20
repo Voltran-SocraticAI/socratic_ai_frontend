@@ -1,0 +1,27 @@
+# Full stack deployment - Frontend + Backend + Database
+# Place this in /home/cihat-socratic/htdocs/
+
+services:
+  # Frontend - Next.js
+  frontend:
+    build:
+      context: ./socratic.cihat.app
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=https://socratic.cihat.app/api/v1
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - socratic-network
+
+volumes:
+  postgres_data:
+
+networks:
+  socratic-network:
+    driver: bridge

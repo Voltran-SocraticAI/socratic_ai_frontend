@@ -10,17 +10,21 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
+import { LanguageToggle } from '@/components/ui/language-toggle'
 import { useUIStore } from '@/stores'
+import { useTranslation } from '@/lib/i18n'
 import { Menu, Settings, HelpCircle, LogOut } from 'lucide-react'
-
-const viewTitles = {
-  'pdf-workspace': 'PDF Workspace',
-  'similarity': 'Similar Questions Generator',
-  'studio': 'Interactive Studio',
-}
 
 export function Header() {
   const { viewMode, toggleSidebar, sidebarOpen } = useUIStore()
+  const t = useTranslation()
+
+  const viewTitles = {
+    'pdf-workspace': t.nav.pdfWorkspace,
+    'similarity': t.nav.similarQuestions,
+    'studio': t.nav.interactiveStudio,
+  }
 
   return (
     <header className="flex h-16 items-center justify-between border-b bg-card px-4">
@@ -34,6 +38,9 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-2">
+        <LanguageToggle />
+        <ThemeToggle />
+        
         <Button variant="ghost" size="icon">
           <HelpCircle className="h-5 w-5" />
         </Button>
@@ -52,7 +59,7 @@ export function Header() {
           <DropdownMenuContent className="w-56" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">User</p>
+                <p className="text-sm font-medium leading-none">{t.common.user}</p>
                 <p className="text-xs leading-none text-muted-foreground">
                   user@example.com
                 </p>
@@ -61,12 +68,12 @@ export function Header() {
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
+              <span>{t.common.settings}</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <LogOut className="mr-2 h-4 w-4" />
-              <span>Log out</span>
+              <span>{t.common.logout}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

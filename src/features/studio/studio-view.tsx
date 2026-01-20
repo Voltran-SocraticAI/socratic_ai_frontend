@@ -7,12 +7,14 @@ import {
 } from '@/components/ui/resizable-panels'
 import { Button } from '@/components/ui/button'
 import { useStudioStore, useQuestionStore, useUIStore } from '@/stores'
+import { useTranslation } from '@/lib/i18n'
 import { ChatPanel, QuestionPreviewPanel, QuestionSelector } from './components'
 import { useRefineQuestion } from './hooks/use-refine-question'
 import { RotateCcw, ArrowLeft } from 'lucide-react'
 import type { Question } from '@/types'
 
 export function StudioView() {
+  const t = useTranslation()
   const {
     question,
     messages,
@@ -58,13 +60,13 @@ export function StudioView() {
               className="gap-2"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back
+              {t.common.close}
             </Button>
           )}
           <div>
-            <h2 className="font-semibold">Interactive Studio</h2>
+            <h2 className="font-semibold">{t.studio.title}</h2>
             <p className="text-sm text-muted-foreground">
-              Refine questions through conversation with AI
+              {t.nav.interactiveStudioDesc}
             </p>
           </div>
         </div>
@@ -72,7 +74,7 @@ export function StudioView() {
         {question && (
           <Button variant="outline" size="sm" onClick={handleReset} className="gap-2">
             <RotateCcw className="h-4 w-4" />
-            Reset Session
+            Reset
           </Button>
         )}
       </div>

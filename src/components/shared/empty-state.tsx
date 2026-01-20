@@ -1,5 +1,8 @@
+'use client'
+
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { useTranslation } from '@/lib/i18n'
 import { FileQuestion, Upload, Sparkles } from 'lucide-react'
 
 interface EmptyStateProps {
@@ -44,33 +47,36 @@ export function EmptyState({
 }
 
 export function NoQuestionsState({ onGenerate }: { onGenerate?: () => void }) {
+  const t = useTranslation()
   return (
     <EmptyState
       icon={<FileQuestion className="h-8 w-8 text-muted-foreground" />}
-      title="No questions yet"
-      description="Upload a PDF or enter text to generate educational questions using AI."
-      action={onGenerate ? { label: 'Generate Questions', onClick: onGenerate } : undefined}
+      title={t.pdfWorkspace.noQuestions}
+      description={t.pdfWorkspace.noQuestionsDesc}
+      action={onGenerate ? { label: t.pdfWorkspace.generateQuestions, onClick: onGenerate } : undefined}
     />
   )
 }
 
 export function UploadPDFState({ onUpload }: { onUpload: () => void }) {
+  const t = useTranslation()
   return (
     <EmptyState
       icon={<Upload className="h-8 w-8 text-muted-foreground" />}
-      title="Upload a PDF"
-      description="Drag and drop a PDF file or click to browse. We'll extract the content and generate questions."
-      action={{ label: 'Upload PDF', onClick: onUpload }}
+      title={t.pdfWorkspace.uploadPdf}
+      description={t.pdfWorkspace.dropPdfHere}
+      action={{ label: t.pdfWorkspace.uploadPdf, onClick: onUpload }}
     />
   )
 }
 
 export function SelectQuestionState() {
+  const t = useTranslation()
   return (
     <EmptyState
       icon={<Sparkles className="h-8 w-8 text-muted-foreground" />}
-      title="Select a question"
-      description="Choose a question from the list to view details or refine it using the Interactive Studio."
+      title={t.studio.selectQuestion}
+      description={t.studio.noQuestionSelectedDesc}
     />
   )
 }
