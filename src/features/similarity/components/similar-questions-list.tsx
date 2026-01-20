@@ -89,9 +89,11 @@ export function SimilarQuestionsList({
                 <Badge variant="secondary" className="text-xs">
                   Variation {index + 1}
                 </Badge>
-                <Badge variant="outline" className="text-xs">
-                  {question.variation_type.replace('_', ' ')}
-                </Badge>
+                {question.variation_type && (
+                  <Badge variant="outline" className="text-xs">
+                    {question.variation_type.replace('_', ' ')}
+                  </Badge>
+                )}
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -134,13 +136,15 @@ export function SimilarQuestionsList({
               )}
 
               {/* Similarity Score */}
-              <div className="flex items-center gap-3">
-                <span className="text-xs text-muted-foreground">Similarity</span>
-                <Progress value={question.similarity_score * 100} className="flex-1 h-2" />
-                <span className="text-xs font-medium">
-                  {Math.round(question.similarity_score * 100)}%
-                </span>
-              </div>
+              {question.similarity_score != null && (
+                <div className="flex items-center gap-3">
+                  <span className="text-xs text-muted-foreground">Similarity</span>
+                  <Progress value={question.similarity_score * 100} className="flex-1 h-2" />
+                  <span className="text-xs font-medium">
+                    {Math.round(question.similarity_score * 100)}%
+                  </span>
+                </div>
+              )}
             </CardContent>
           </Card>
         ))}

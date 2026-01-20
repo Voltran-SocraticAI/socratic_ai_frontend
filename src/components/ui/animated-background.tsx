@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 /**
@@ -94,24 +95,44 @@ export function AnimatedBackground() {
  * Use sparingly for specific sections
  */
 export function FloatingParticles({ count = 12 }: { count?: number }) {
+  const [mounted, setMounted] = useState(false)
+
+  // Generate stable random values on client only to avoid hydration mismatch
+  const particles = useMemo(() => {
+    if (!mounted) return []
+    return [...Array(count)].map((_, i) => ({
+      id: i,
+      left: 10 + Math.random() * 80,
+      top: 10 + Math.random() * 80,
+      duration: 4 + Math.random() * 3,
+      delay: Math.random() * 2,
+    }))
+  }, [mounted, count])
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(count)].map((_, i) => (
+      {particles.map((particle) => (
         <motion.div
-          key={i}
+          key={particle.id}
           className="absolute w-[2px] h-[2px] rounded-full bg-foreground/10"
           style={{
-            left: `${10 + Math.random() * 80}%`,
-            top: `${10 + Math.random() * 80}%`,
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [0, -15, 0],
             opacity: [0.1, 0.25, 0.1],
           }}
           transition={{
-            duration: 4 + Math.random() * 3,
+            duration: particle.duration,
             repeat: Infinity,
-            delay: Math.random() * 2,
+            delay: particle.delay,
             ease: 'easeInOut',
           }}
         />
