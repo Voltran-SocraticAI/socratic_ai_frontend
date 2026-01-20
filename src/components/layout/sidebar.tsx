@@ -49,7 +49,7 @@ export function Sidebar() {
       animate={{ width: sidebarOpen ? 256 : 64 }}
       transition={{ duration: durations.normal, ease: easings.smooth }}
       className={cn(
-        'relative flex flex-col border-r border-border bg-card/50 backdrop-blur-xl',
+        'relative flex flex-col border-r border-border bg-card/50 backdrop-blur-xl overflow-hidden',
         sidebarOpen ? 'w-64' : 'w-16'
       )}
     >
