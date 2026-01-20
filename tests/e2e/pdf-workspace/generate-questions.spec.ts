@@ -63,8 +63,8 @@ test.describe('PDF Workspace - Generate Questions', () => {
     const sampleText = 'Photosynthesis is the process by which plants convert light energy into chemical energy stored in glucose molecules. This process is essential for life on Earth.'
     await page.locator('textarea#content-text').fill(sampleText)
 
-    // Click generate button
-    const generateButton = page.getByRole('button', { name: /generate questions/i })
+    // Click generate button - use data-testid container to be specific
+    const generateButton = page.getByTestId('view-pdf-workspace').getByRole('button', { name: /generate questions/i })
     await expect(generateButton).toBeEnabled()
     await generateButton.click()
 
@@ -73,10 +73,10 @@ test.describe('PDF Workspace - Generate Questions', () => {
   })
 
   test('should show loading state during generation', async ({ page, mockAPI }) => {
-    // Setup mock with delay
+    // Setup mock with longer delay to ensure we can check loading state
     await mockAPI({
       generateFromText: {
-        delay: 2000,
+        delay: 5000,
       },
     })
 
@@ -84,12 +84,12 @@ test.describe('PDF Workspace - Generate Questions', () => {
     await page.getByRole('tab', { name: /or enter text/i }).click()
     await page.locator('textarea#content-text').fill('This is a sample text that needs to be at least 50 characters long for validation to pass.')
 
-    // Click generate
-    const generateButton = page.getByRole('button', { name: /generate questions/i })
+    // Get button within the view container and click
+    const generateButton = page.getByTestId('view-pdf-workspace').locator('button').filter({ hasText: /generate|generating/i })
     await generateButton.click()
 
-    // Should show loading state (button disabled or progress)
-    await expect(generateButton).toBeDisabled()
+    // Should show loading state - button should be disabled during loading
+    await expect(generateButton).toBeDisabled({ timeout: 2000 })
   })
 
   test('should handle API error gracefully', async ({ page, mockAPI }) => {
@@ -105,8 +105,8 @@ test.describe('PDF Workspace - Generate Questions', () => {
     await page.getByRole('tab', { name: /or enter text/i }).click()
     await page.locator('textarea#content-text').fill('This is a sample text that needs to be at least 50 characters long for validation to pass.')
 
-    // Click generate
-    await page.getByRole('button', { name: /generate questions/i }).click()
+    // Click generate - use specific container
+    await page.getByTestId('view-pdf-workspace').getByRole('button', { name: /generate questions/i }).click()
 
     // Should show error message (toast)
     await expect(page.getByText(/failed|error/i)).toBeVisible({ timeout: 10000 })

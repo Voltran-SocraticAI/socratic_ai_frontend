@@ -72,99 +72,21 @@
                 - generic [ref=e87]:
                   - text: Number of Similar Questions
                   - spinbutton "Number of Similar Questions" [ref=e88]: "3"
-            - button "Generate Variations" [ref=e90] [cursor=pointer]:
-              - img
-              - text: Generate Variations
-          - generic [ref=e91]:
-            - generic [ref=e92]:
-              - heading "Similar Questions" [level=2] [ref=e93]
-              - paragraph [ref=e94]: 2 questions generated
-            - generic [ref=e98]:
-              - generic [ref=e99]:
-                - generic [ref=e101]: Original Question Analysis
-                - generic [ref=e102]:
-                  - generic [ref=e103]:
-                    - generic [ref=e104]: "Core Concept:"
-                    - generic [ref=e105]: Photosynthesis energy conversion
-                  - generic [ref=e106]:
-                    - generic [ref=e107]: "Difficulty:"
-                    - generic [ref=e108]: medium
-                  - generic [ref=e109]:
-                    - generic [ref=e110]: "Structure:"
-                    - generic [ref=e111]: Multiple choice with 4 options
-                  - generic [ref=e112]:
-                    - text: "Key Distractors:"
-                    - generic [ref=e113]:
-                      - generic [ref=e114]: Cellular respiration
-                      - generic [ref=e115]: Oxygen production
-                      - generic [ref=e116]: Water absorption
-              - generic [ref=e117]:
-                - generic [ref=e119]:
-                  - generic [ref=e120]: Variation 1
-                  - generic [ref=e121]: paraphrase
-                - generic [ref=e122]:
-                  - paragraph [ref=e123]: How do plants convert sunlight into usable energy?
-                  - generic [ref=e124]:
-                    - generic [ref=e125]:
-                      - img [ref=e126]
-                      - generic [ref=e129]: A.
-                      - generic [ref=e130]: Through photosynthesis creating glucose
-                    - generic [ref=e131]:
-                      - img [ref=e132]
-                      - generic [ref=e134]: B.
-                      - generic [ref=e135]: Through respiration breaking down oxygen
-                    - generic [ref=e136]:
-                      - img [ref=e137]
-                      - generic [ref=e139]: C.
-                      - generic [ref=e140]: Through transpiration absorbing water
-                    - generic [ref=e141]:
-                      - img [ref=e142]
-                      - generic [ref=e144]: D.
-                      - generic [ref=e145]: Through reproduction creating seeds
-                  - generic [ref=e146]:
-                    - paragraph [ref=e147]: How it differs
-                    - paragraph [ref=e148]: Paraphrased version focusing on the conversion process
-                  - generic [ref=e149]:
-                    - generic [ref=e150]: Similarity
-                    - progressbar [ref=e151]
-                    - generic [ref=e153]: 89%
-              - generic [ref=e154]:
-                - generic [ref=e156]:
-                  - generic [ref=e157]: Variation 2
-                  - generic [ref=e158]: context change
-                - generic [ref=e159]:
-                  - paragraph [ref=e160]: What is the main purpose of chlorophyll in plants?
-                  - generic [ref=e161]:
-                    - generic [ref=e162]:
-                      - img [ref=e163]
-                      - generic [ref=e166]: A.
-                      - generic [ref=e167]: Capture light energy for photosynthesis
-                    - generic [ref=e168]:
-                      - img [ref=e169]
-                      - generic [ref=e171]: B.
-                      - generic [ref=e172]: Store water in leaves
-                    - generic [ref=e173]:
-                      - img [ref=e174]
-                      - generic [ref=e176]: C.
-                      - generic [ref=e177]: Transport nutrients
-                    - generic [ref=e178]:
-                      - img [ref=e179]
-                      - generic [ref=e181]: D.
-                      - generic [ref=e182]: Protect from insects
-                  - generic [ref=e183]:
-                    - paragraph [ref=e184]: How it differs
-                    - paragraph [ref=e185]: Context shifted to chlorophyll's role
-                  - generic [ref=e186]:
-                    - generic [ref=e187]: Similarity
-                    - progressbar [ref=e188]
-                    - generic [ref=e190]: 75%
+            - generic [ref=e89]:
+              - progressbar [ref=e90]
+              - button "Generating variations..." [disabled]:
+                - img
+                - text: Generating variations...
+          - generic [ref=e93]:
+            - heading "Similar Questions" [level=2] [ref=e94]
+            - paragraph [ref=e95]: 0 questions generated
   - region "Notifications alt+T"
-  - status [ref=e191]:
-    - generic [ref=e192]:
-      - img [ref=e194]
-      - generic [ref=e196]:
+  - status [ref=e133]:
+    - generic [ref=e134]:
+      - img [ref=e136]
+      - generic [ref=e138]:
         - text: Static route
-        - button "Hide static indicator" [ref=e197] [cursor=pointer]:
-          - img [ref=e198]
-  - alert [ref=e201]
+        - button "Hide static indicator" [ref=e139] [cursor=pointer]:
+          - img [ref=e140]
+  - alert [ref=e143]
 ```

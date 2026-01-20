@@ -26,6 +26,8 @@ test.describe('Language Toggle', () => {
 
     // Reload page and verify language persists
     await page.reload()
+    // Wait for the component to mount (it shows loading state initially)
+    await expect(page.getByTestId('language-toggle')).toBeVisible({ timeout: 5000 })
     await languageToggle.assertLanguage('tr')
   })
 

@@ -63,7 +63,7 @@ test.describe('Similarity - Generate Similar Questions', () => {
   test('should show loading state during generation', async ({ page, mockAPI }) => {
     await mockAPI({
       generateSimilar: {
-        delay: 2000,
+        delay: 5000, // Longer delay to ensure we can observe loading state
       },
     })
 
@@ -73,7 +73,7 @@ test.describe('Similarity - Generate Similar Questions', () => {
     await generateButton.click()
 
     // Button should be disabled during loading
-    await expect(generateButton).toBeDisabled()
+    await expect(generateButton).toBeDisabled({ timeout: 2000 })
   })
 
   test('should handle API error', async ({ page, mockAPI }) => {

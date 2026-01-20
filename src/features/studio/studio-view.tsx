@@ -85,7 +85,7 @@ export function StudioView() {
           <div className="w-full max-w-md">
             <QuestionSelector
               onSelectQuestion={handleSelectQuestion}
-              currentQuestionId={activeQuestion?.id}
+              currentQuestionId={undefined}
             />
           </div>
         </div>

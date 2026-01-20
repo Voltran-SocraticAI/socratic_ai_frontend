@@ -56,7 +56,6 @@ export const translations = {
       easy: 'Easy',
       medium: 'Medium',
       hard: 'Hard',
-      mixed: 'Mixed',
       count: 'Number of Questions',
       language: 'Language',
       topic: 'Topic (optional)',
