@@ -48,7 +48,7 @@ export function StudioView() {
     .find((m) => m.role === 'assistant')
 
   return (
-    <div className="h-full flex flex-col">
+    <div data-testid="view-studio" className="h-full flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b">
         <div className="flex items-center gap-4">

@@ -70,7 +70,7 @@ export function PDFWorkspaceView() {
   }
 
   return (
-    <div className="flex h-full">
+    <div data-testid="view-pdf-workspace" className="flex h-full">
       {/* Left Panel - Input & Options */}
       <div className="w-[400px] border-r flex flex-col">
         <ScrollArea className="flex-1">

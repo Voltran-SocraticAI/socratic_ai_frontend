@@ -37,7 +37,7 @@ export function LanguageToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-2">
+        <Button data-testid="language-toggle" variant="ghost" size="sm" className="gap-2">
           <span className="text-xs font-medium">{currentLanguage.flag}</span>
           <Languages className="h-4 w-4" />
           <span className="sr-only">{t.language.select}</span>
@@ -47,6 +47,7 @@ export function LanguageToggle() {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
+            data-testid={`language-option-${lang.code}`}
             onClick={() => setLocale(lang.code)}
             className={locale === lang.code ? 'bg-accent' : ''}
           >
