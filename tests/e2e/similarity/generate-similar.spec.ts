@@ -12,11 +12,11 @@ test.describe('Similarity - Generate Similar Questions', () => {
   })
 
   test('should have question input form', async ({ page }) => {
-    // Should have textarea for question text
-    await expect(page.locator('textarea')).toBeVisible()
+    // Should have textarea for question text (inside QuestionInputForm)
+    await expect(page.locator('textarea#question-text')).toBeVisible()
 
     // Should have question type selector
-    await expect(page.getByText(/question type|mcq|open/i)).toBeVisible()
+    await expect(page.getByText('Question Type')).toBeVisible()
   })
 
   test('should generate similar questions', async ({ page, mockAPI }) => {
@@ -50,10 +50,10 @@ test.describe('Similarity - Generate Similar Questions', () => {
     })
 
     // Enter question text
-    await page.locator('textarea').first().fill('What is the capital of France?')
+    await page.locator('textarea#question-text').fill('What is the capital of France?')
 
-    // Click generate button
-    const generateButton = page.getByRole('button', { name: /generate/i })
+    // Click generate button (text from translations: "Generate Variations")
+    const generateButton = page.getByRole('button', { name: /generate variations/i })
     await generateButton.click()
 
     // Wait for results
@@ -67,9 +67,9 @@ test.describe('Similarity - Generate Similar Questions', () => {
       },
     })
 
-    await page.locator('textarea').first().fill('What is the capital of France?')
+    await page.locator('textarea#question-text').fill('What is the capital of France?')
 
-    const generateButton = page.getByRole('button', { name: /generate/i })
+    const generateButton = page.getByRole('button', { name: /generate variations/i })
     await generateButton.click()
 
     // Button should be disabled during loading
@@ -84,8 +84,8 @@ test.describe('Similarity - Generate Similar Questions', () => {
       },
     })
 
-    await page.locator('textarea').first().fill('What is the capital of France?')
-    await page.getByRole('button', { name: /generate/i }).click()
+    await page.locator('textarea#question-text').fill('What is the capital of France?')
+    await page.getByRole('button', { name: /generate variations/i }).click()
 
     // Should show error
     await expect(page.getByText(/failed|error/i)).toBeVisible({ timeout: 10000 })

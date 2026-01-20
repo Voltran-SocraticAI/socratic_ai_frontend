@@ -6,114 +6,106 @@
     - complementary [ref=e3]:
       - generic [ref=e5]:
         - generic [ref=e6]:
-          - img [ref=e10]
-          - generic [ref=e12]:
-            - heading "Socratic AI" [level=1] [ref=e13]
-            - paragraph [ref=e14]:
-              - img [ref=e15]
-              - text: Powered by AI
-        - button [ref=e17] [cursor=pointer]:
-          - generic [ref=e18]:
+          - generic [ref=e8]: S
+          - generic [ref=e9]:
+            - generic [ref=e10]: Socratic
+            - generic [ref=e11]: AI Platform
+        - button [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]:
             - img
-      - navigation [ref=e22]:
-        - button "PDF Workspace Generate questions from PDFs" [ref=e24] [cursor=pointer]:
-          - img [ref=e29]
-          - generic [ref=e32]:
-            - generic [ref=e33]: PDF Workspace
-            - generic [ref=e34]: Generate questions from PDFs
-        - button "Similar Questions Generate question variations" [ref=e36] [cursor=pointer]:
-          - img [ref=e39]
+      - navigation [ref=e17]:
+        - button "PDF Workspace Generate questions from PDFs" [ref=e19] [cursor=pointer]:
+          - img [ref=e22]
+          - generic [ref=e25]:
+            - generic [ref=e26]: PDF Workspace
+            - generic [ref=e27]: Generate questions from PDFs
+        - button "Similar Questions Generate question variations" [ref=e29] [cursor=pointer]:
+          - img [ref=e31]
+          - generic [ref=e36]:
+            - generic [ref=e37]: Similar Questions
+            - generic [ref=e38]: Generate question variations
+        - button "Interactive Studio Refine questions with AI" [ref=e40] [cursor=pointer]:
+          - img [ref=e42]
           - generic [ref=e44]:
-            - generic [ref=e45]: Similar Questions
-            - generic [ref=e46]: Generate question variations
-        - button "Interactive Studio Refine questions with AI" [ref=e48] [cursor=pointer]:
-          - img [ref=e51]
-          - generic [ref=e53]:
-            - generic [ref=e54]: Interactive Studio
-            - generic [ref=e55]: Refine questions with AI
-      - generic [ref=e58]:
-        - generic [ref=e61]: AI Ready
-        - paragraph [ref=e62]: Powered by AI
-    - generic [ref=e63]:
-      - banner [ref=e64]:
-        - generic [ref=e66]:
-          - generic [ref=e67]: 📄
+            - generic [ref=e45]: Interactive Studio
+            - generic [ref=e46]: Refine questions with AI
+      - generic [ref=e48]:
+        - img [ref=e49]
+        - generic [ref=e51]: Powered by AI
+    - generic [ref=e52]:
+      - banner [ref=e53]:
+        - heading "PDF Workspace" [level=1] [ref=e56]
+        - generic [ref=e57]:
+          - button "EN Select language" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]: EN
+            - img
+            - generic [ref=e60]: Select language
+          - button "Toggle theme" [ref=e61] [cursor=pointer]:
+            - img
+            - generic [ref=e62]: Toggle theme
+          - button [ref=e64] [cursor=pointer]:
+            - img
+          - button [ref=e65] [cursor=pointer]:
+            - img
+      - main [ref=e66]:
+        - generic [ref=e67]:
           - generic [ref=e68]:
-            - heading "PDF Workspace" [level=1] [ref=e69]
-            - generic [ref=e70]:
-              - img [ref=e71]
-              - generic [ref=e73]: AI-Powered
-        - generic [ref=e74]:
-          - button "EN Select language" [ref=e75] [cursor=pointer]:
-            - generic [ref=e76]: EN
-            - img
-            - generic [ref=e77]: Select language
-          - button "Toggle theme" [ref=e78] [cursor=pointer]:
-            - img
-            - generic [ref=e79]: Toggle theme
-          - button [ref=e81] [cursor=pointer]:
-            - img
-          - button [ref=e82] [cursor=pointer]:
-            - img
-      - main [ref=e83]:
-        - generic [ref=e84]:
-          - generic [ref=e85]:
-            - generic [ref=e89]:
-              - generic [ref=e90]:
-                - tablist [ref=e91]:
-                  - tab "Upload PDF" [ref=e92] [cursor=pointer]:
-                    - img [ref=e93]
+            - generic [ref=e72]:
+              - generic [ref=e73]:
+                - tablist [ref=e74]:
+                  - tab "Upload PDF" [ref=e75] [cursor=pointer]:
+                    - img [ref=e76]
                     - text: Upload PDF
-                  - tab "Or enter text directly" [selected] [ref=e96] [cursor=pointer]:
-                    - img [ref=e97]
+                  - tab "Or enter text directly" [selected] [ref=e79] [cursor=pointer]:
+                    - img [ref=e80]
                     - text: Or enter text directly
-                - tabpanel "Or enter text directly" [ref=e99]:
-                  - generic [ref=e100]:
-                    - generic [ref=e102]: Or Enter Text Directly
-                    - generic [ref=e103]:
-                      - generic [ref=e104]: Educational Content
-                      - textbox "Educational Content" [active] [ref=e105]:
+                - tabpanel "Or enter text directly" [ref=e82]:
+                  - generic [ref=e83]:
+                    - generic [ref=e85]: Or Enter Text Directly
+                    - generic [ref=e86]:
+                      - generic [ref=e87]: Educational Content
+                      - textbox "Educational Content" [active] [ref=e88]:
                         - /placeholder: Paste or type your educational content here (minimum 50 characters)...
                         - text: Photosynthesis is the process by which plants convert light energy into chemical energy stored in glucose molecules. This process is essential for life on Earth.
-                      - generic [ref=e107]: 161 / 50 minimum characters
-              - generic [ref=e108]:
-                - generic [ref=e110]: Generation Options
-                - generic [ref=e111]:
-                  - generic [ref=e112]:
+                      - generic [ref=e90]: 161 / 50 minimum characters
+              - generic [ref=e91]:
+                - generic [ref=e93]: Generation Options
+                - generic [ref=e94]:
+                  - generic [ref=e95]:
                     - text: Number of Questions
-                    - spinbutton "Number of Questions" [ref=e113]: "5"
-                  - generic [ref=e114]:
+                    - spinbutton "Number of Questions" [ref=e96]: "5"
+                  - generic [ref=e97]:
                     - text: Question Type
-                    - generic [ref=e115]:
-                      - generic [ref=e116] [cursor=pointer]: Multiple Choice
-                      - generic [ref=e117] [cursor=pointer]: Open Ended
-                  - generic [ref=e118]:
+                    - generic [ref=e98]:
+                      - generic [ref=e99] [cursor=pointer]: Multiple Choice
+                      - generic [ref=e100] [cursor=pointer]: Open Ended
+                  - generic [ref=e101]:
                     - text: Difficulty
-                    - combobox "Difficulty" [ref=e119] [cursor=pointer]:
+                    - combobox "Difficulty" [ref=e102] [cursor=pointer]:
                       - generic: Mixed
-                      - img [ref=e120]
-                  - generic [ref=e122]:
+                      - img [ref=e103]
+                  - generic [ref=e105]:
                     - text: Topic (optional)
-                    - textbox "Topic (optional)" [ref=e123]:
+                    - textbox "Topic (optional)" [ref=e106]:
                       - /placeholder: e.g., Biology, History...
-            - button "Generate Questions" [ref=e127] [cursor=pointer]:
+            - button "Generate Questions" [ref=e110] [cursor=pointer]:
               - img
               - text: Generate Questions
-          - generic [ref=e128]:
-            - generic [ref=e129]:
-              - heading "PDF Workspace" [level=2] [ref=e130]
-              - paragraph [ref=e131]: 0 questions generated
-            - generic [ref=e133]:
-              - img [ref=e135]
-              - heading "No questions yet" [level=3] [ref=e138]
-              - paragraph [ref=e139]: Upload a PDF or enter text to generate questions
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - heading "PDF Workspace" [level=2] [ref=e113]
+              - paragraph [ref=e114]: 0 questions generated
+            - generic [ref=e116]:
+              - img [ref=e118]
+              - heading "No questions yet" [level=3] [ref=e121]
+              - paragraph [ref=e122]: Upload a PDF or enter text to generate questions
   - region "Notifications alt+T"
-  - status [ref=e140]:
-    - generic [ref=e141]:
-      - img [ref=e143]
-      - generic [ref=e145]:
+  - status [ref=e123]:
+    - generic [ref=e124]:
+      - img [ref=e126]
+      - generic [ref=e128]:
         - text: Static route
-        - button "Hide static indicator" [ref=e146] [cursor=pointer]:
-          - img [ref=e147]
-  - alert [ref=e150]
+        - button "Hide static indicator" [ref=e129] [cursor=pointer]:
+          - img [ref=e130]
+  - alert [ref=e133]
 ```

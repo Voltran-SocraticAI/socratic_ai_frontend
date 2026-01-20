@@ -12,13 +12,18 @@ test.describe('Studio - Refine Question', () => {
   })
 
   test('should show question selector when no question is active', async ({ page }) => {
-    // Studio should show a way to select a question
-    await expect(page.getByText(/select|choose|question/i)).toBeVisible()
+    // When no questions exist, shows "No questions available" message
+    // When questions exist, shows "Select a Question to Refine" button
+    // Either way, we should see some instruction about questions
+    const hasNoQuestions = await page.getByText('No questions available.').isVisible()
+    const hasSelectButton = await page.getByRole('button', { name: /select a question to refine/i }).isVisible()
+    expect(hasNoQuestions || hasSelectButton).toBeTruthy()
   })
 
-  test('should have chat interface', async ({ page }) => {
-    // Look for chat-related elements
-    await expect(page.locator('textarea, input[type="text"]')).toBeVisible()
+  test('should show empty state message when no questions exist', async ({ page }) => {
+    // When no questions have been generated, show helpful message
+    await expect(page.getByText(/no questions available/i)).toBeVisible()
+    await expect(page.getByText(/generate some questions/i)).toBeVisible()
   })
 
   test('should refine question via chat', async ({ page, mockAPI }) => {

@@ -1,0 +1,99 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - generic [ref=e8]: S
+          - generic [ref=e9]:
+            - generic [ref=e10]: Socratic
+            - generic [ref=e11]: AI Platform
+        - button [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]:
+            - img
+      - navigation [ref=e17]:
+        - button "PDF Workspace Generate questions from PDFs" [ref=e19] [cursor=pointer]:
+          - img [ref=e22]
+          - generic:
+            - generic [ref=e25]: PDF Workspace
+            - generic [ref=e26]: Generate questions from PDFs
+        - button "Similar Questions Generate question variations" [ref=e28] [cursor=pointer]:
+          - img [ref=e30]
+          - generic:
+            - generic [ref=e35]: Similar Questions
+            - generic [ref=e36]: Generate question variations
+        - button "Interactive Studio Refine questions with AI" [ref=e38] [cursor=pointer]:
+          - img [ref=e40]
+          - generic:
+            - generic [ref=e42]: Interactive Studio
+            - generic [ref=e43]: Refine questions with AI
+      - generic [ref=e45]:
+        - img [ref=e46]
+        - generic [ref=e48]: Powered by AI
+    - generic [ref=e49]:
+      - banner [ref=e50]:
+        - heading "PDF Workspace" [level=1] [ref=e53]
+        - generic [ref=e54]:
+          - button [disabled]:
+            - img
+          - button [disabled]:
+            - img
+          - button [ref=e56] [cursor=pointer]:
+            - img
+          - button [ref=e57] [cursor=pointer]:
+            - img
+      - main [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - tablist [ref=e66]:
+                  - tab "Upload PDF" [selected] [ref=e67] [cursor=pointer]:
+                    - img [ref=e68]
+                    - text: Upload PDF
+                  - tab "Or enter text directly" [ref=e71] [cursor=pointer]:
+                    - img [ref=e72]
+                    - text: Or enter text directly
+                - tabpanel "Upload PDF" [ref=e74]:
+                  - generic [ref=e75] [cursor=pointer]:
+                    - button "Choose File" [ref=e76]
+                    - generic [ref=e77]:
+                      - img [ref=e79]
+                      - paragraph [ref=e83]: Drop PDF here or click to upload
+                      - paragraph [ref=e84]: "Supported: PDF (max 50MB)"
+              - generic [ref=e85]:
+                - generic [ref=e87]: Generation Options
+                - generic [ref=e88]:
+                  - generic [ref=e89]:
+                    - text: Number of Questions
+                    - spinbutton "Number of Questions" [ref=e90]: "5"
+                  - generic [ref=e91]:
+                    - text: Question Type
+                    - generic [ref=e92]:
+                      - generic [ref=e93] [cursor=pointer]: Multiple Choice
+                      - generic [ref=e94] [cursor=pointer]: Open Ended
+                  - generic [ref=e95]:
+                    - text: Difficulty
+                    - combobox "Difficulty" [ref=e96] [cursor=pointer]:
+                      - img [ref=e97]
+                    - combobox [ref=e99]
+                  - generic [ref=e100]:
+                    - text: Topic (optional)
+                    - textbox "Topic (optional)" [ref=e101]:
+                      - /placeholder: e.g., Biology, History...
+            - generic [ref=e102]:
+              - button "Generate Questions" [disabled]:
+                - img
+                - text: Generate Questions
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - heading "PDF Workspace" [level=2] [ref=e105]
+              - paragraph [ref=e106]: 0 questions generated
+            - generic [ref=e108]:
+              - img [ref=e110]
+              - heading "No questions yet" [level=3] [ref=e113]
+              - paragraph [ref=e114]: Upload a PDF or enter text to generate questions
+  - region "Notifications alt+T"
+```

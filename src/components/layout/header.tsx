@@ -6,7 +6,8 @@ import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { LanguageToggle } from '@/components/ui/language-toggle'
 import { useUIStore } from '@/stores'
 import { useTranslation } from '@/lib/i18n'
-import { Menu, Settings, HelpCircle, Sparkles } from 'lucide-react'
+import { durations, easings, fadeIn } from '@/lib/animations'
+import { Menu, Settings, HelpCircle } from 'lucide-react'
 
 export function Header() {
   const { viewMode, toggleSidebar, sidebarOpen } = useUIStore()
@@ -18,77 +19,65 @@ export function Header() {
     'studio': t.nav.interactiveStudio,
   }
 
-  const viewIcons = {
-    'pdf-workspace': '📄',
-    'similarity': '🔄',
-    'studio': '✨',
-  }
-
   return (
-    <header data-testid="header" className="flex h-16 items-center justify-between border-b border-border/50 bg-card/30 backdrop-blur-xl px-4">
-      <div className="flex items-center gap-4">
+    <header
+      data-testid="header"
+      className="flex h-14 items-center justify-between border-b border-border bg-card/30 backdrop-blur-xl px-4"
+    >
+      <div className="flex items-center gap-3">
         {!sidebarOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2 }}
-          >
+          <motion.div {...fadeIn}>
             <Button
               data-testid="header-menu-button"
               variant="ghost"
               size="icon"
               onClick={toggleSidebar}
-              className="hover:bg-primary/10"
+              className="h-8 w-8 hover:bg-accent press-effect"
             >
-              <Menu className="h-5 w-5" />
+              <Menu className="h-4 w-4" />
             </Button>
           </motion.div>
         )}
-        
+
         <motion.div
           key={viewMode}
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center gap-3"
+          transition={{ duration: durations.fast, ease: easings.smooth }}
+          className="flex items-center"
         >
-          <span className="text-2xl">{viewIcons[viewMode]}</span>
-          <div>
-            <h1 data-testid="view-title" className="text-lg font-semibold">{viewTitles[viewMode]}</h1>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Sparkles className="h-3 w-3 text-primary" />
-              <span>AI-Powered</span>
-            </div>
-          </div>
+          <h1 data-testid="view-title" className="text-sm font-medium">
+            {viewTitles[viewMode]}
+          </h1>
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="flex items-center gap-1"
-        initial={{ opacity: 0, x: 20 }}
+        initial={{ opacity: 0, x: 12 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
+        transition={{ duration: durations.normal, delay: 0.05 }}
       >
         <LanguageToggle />
         <ThemeToggle />
-        
-        <div className="w-px h-6 bg-border/50 mx-2" />
-        
+
+        <div className="w-px h-5 bg-border mx-1.5" />
+
         <Button
           data-testid="help-button"
           variant="ghost"
           size="icon"
-          className="hover:bg-primary/10 transition-colors"
+          className="h-8 w-8 hover:bg-accent press-effect"
         >
-          <HelpCircle className="h-5 w-5" />
+          <HelpCircle className="h-4 w-4" />
         </Button>
         <Button
           data-testid="settings-button"
           variant="ghost"
           size="icon"
-          className="hover:bg-primary/10 transition-colors"
+          className="h-8 w-8 hover:bg-accent press-effect"
         >
-          <Settings className="h-5 w-5" />
+          <Settings className="h-4 w-4" />
         </Button>
       </motion.div>
     </header>

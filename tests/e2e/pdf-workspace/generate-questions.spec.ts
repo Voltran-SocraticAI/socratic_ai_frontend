@@ -11,23 +11,23 @@ test.describe('PDF Workspace - Generate Questions', () => {
   })
 
   test('should show tabs for PDF and Text input', async ({ page }) => {
-    // Look for tab triggers
-    await expect(page.getByRole('tab', { name: /pdf/i })).toBeVisible()
-    await expect(page.getByRole('tab', { name: /text/i })).toBeVisible()
+    // Look for tab triggers - actual text from translations
+    await expect(page.getByRole('tab', { name: /upload pdf/i })).toBeVisible()
+    await expect(page.getByRole('tab', { name: /or enter text/i })).toBeVisible()
   })
 
   test('should switch between PDF and Text tabs', async ({ page }) => {
     // Click on Text tab
-    await page.getByRole('tab', { name: /text/i }).click()
+    await page.getByRole('tab', { name: /or enter text/i }).click()
 
-    // Should show text input area
-    await expect(page.locator('textarea')).toBeVisible()
+    // Should show text input area (textarea inside TextInputPanel)
+    await expect(page.locator('textarea#content-text')).toBeVisible()
 
     // Click on PDF tab
-    await page.getByRole('tab', { name: /pdf/i }).click()
+    await page.getByRole('tab', { name: /upload pdf/i }).click()
 
     // Should show PDF dropzone area
-    await expect(page.getByText(/drag|drop|upload/i)).toBeVisible()
+    await expect(page.getByText(/drop pdf here|click to upload/i)).toBeVisible()
   })
 
   test('should generate questions from text input', async ({ page, mockAPI }) => {
@@ -57,14 +57,14 @@ test.describe('PDF Workspace - Generate Questions', () => {
     })
 
     // Switch to text tab
-    await page.getByRole('tab', { name: /text/i }).click()
+    await page.getByRole('tab', { name: /or enter text/i }).click()
 
     // Enter text content (need 50+ characters)
     const sampleText = 'Photosynthesis is the process by which plants convert light energy into chemical energy stored in glucose molecules. This process is essential for life on Earth.'
-    await page.locator('textarea').fill(sampleText)
+    await page.locator('textarea#content-text').fill(sampleText)
 
     // Click generate button
-    const generateButton = page.getByRole('button', { name: /generate/i })
+    const generateButton = page.getByRole('button', { name: /generate questions/i })
     await expect(generateButton).toBeEnabled()
     await generateButton.click()
 
@@ -81,11 +81,11 @@ test.describe('PDF Workspace - Generate Questions', () => {
     })
 
     // Switch to text tab and enter text
-    await page.getByRole('tab', { name: /text/i }).click()
-    await page.locator('textarea').fill('This is a sample text that needs to be at least 50 characters long for validation to pass.')
+    await page.getByRole('tab', { name: /or enter text/i }).click()
+    await page.locator('textarea#content-text').fill('This is a sample text that needs to be at least 50 characters long for validation to pass.')
 
     // Click generate
-    const generateButton = page.getByRole('button', { name: /generate/i })
+    const generateButton = page.getByRole('button', { name: /generate questions/i })
     await generateButton.click()
 
     // Should show loading state (button disabled or progress)
@@ -102,11 +102,11 @@ test.describe('PDF Workspace - Generate Questions', () => {
     })
 
     // Switch to text tab and enter text
-    await page.getByRole('tab', { name: /text/i }).click()
-    await page.locator('textarea').fill('This is a sample text that needs to be at least 50 characters long for validation to pass.')
+    await page.getByRole('tab', { name: /or enter text/i }).click()
+    await page.locator('textarea#content-text').fill('This is a sample text that needs to be at least 50 characters long for validation to pass.')
 
     // Click generate
-    await page.getByRole('button', { name: /generate/i }).click()
+    await page.getByRole('button', { name: /generate questions/i }).click()
 
     // Should show error message (toast)
     await expect(page.getByText(/failed|error/i)).toBeVisible({ timeout: 10000 })
