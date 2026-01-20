@@ -243,4 +243,10 @@ export const translations = {
 } as const
 
 export type Locale = keyof typeof translations
-export type TranslationKeys = typeof translations.en
+
+// Deep type that converts all string literals to string
+type DeepStringify<T> = {
+  [K in keyof T]: T[K] extends string ? string : DeepStringify<T[K]>
+}
+
+export type TranslationKeys = DeepStringify<typeof translations.en>

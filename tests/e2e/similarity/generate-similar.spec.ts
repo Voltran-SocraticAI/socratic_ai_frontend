@@ -69,7 +69,8 @@ test.describe('Similarity - Generate Similar Questions', () => {
 
     await page.locator('textarea#question-text').fill('What is the capital of France?')
 
-    const generateButton = page.getByRole('button', { name: /generate variations/i })
+    // Use container to get the specific button
+    const generateButton = page.getByTestId('view-similarity').locator('button').filter({ hasText: /generate|generating/i })
     await generateButton.click()
 
     // Button should be disabled during loading
